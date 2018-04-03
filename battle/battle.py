@@ -1,6 +1,3 @@
-from copy import copy
-
-
 class Battle:
 
     def __init__(self, attackers, defenders):
@@ -11,9 +8,11 @@ class Battle:
         attack_hits = 0
         defense_hits = 0
         for unit in self.attackers:
-            attack_hits += unit.roll_attack()
+            _, damage = unit.roll_attack()
+            attack_hits += damage
         for unit in self.defenders:
-            defense_hits = unit.roll_defense()
+            _, damage = unit.roll_defense()
+            defense_hits += damage
         return attack_hits, defense_hits
 
     def take_casulties(self, attack_hits, defense_hits):
@@ -34,7 +33,6 @@ class Battle:
             return 'Attacker'
         if self.defenders and not self.attackers:
             return 'Defender'
-        raise Exception('This can not happen')
 
     def simulate(self):
         while self.winner is None:
