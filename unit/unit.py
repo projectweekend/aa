@@ -1,4 +1,4 @@
-from random import choice
+from random import choice, randint
 
 
 ATTACK = 'attack'
@@ -18,11 +18,20 @@ class Unit:
     def __repr__(self):
         return self.name
 
+    def roll(self):
+        return randint(1, 6)
+
     def roll_attack(self):
-        return 1 if choice(DIE_VALUES) <= self.attack else 0
+        roll = self.roll()
+        if roll <= self.attack:
+            return roll, 1
+        return roll, 0
 
     def roll_defense(self):
-        return 1 if choice(DIE_VALUES) <= self.defense else 0
+        roll = self.roll()
+        if roll <= self.defense:
+            return roll, 1
+        return roll, 0
 
 
 def unit_factory(name):
