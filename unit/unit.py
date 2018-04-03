@@ -4,7 +4,6 @@ from random import choice, randint
 ATTACK = 'attack'
 DEFENSE = 'defense'
 COST = 'cost'
-DIE_VALUES = [1, 2, 3, 4, 5, 6]
 
 
 class Unit:
