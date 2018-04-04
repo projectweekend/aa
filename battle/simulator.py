@@ -9,7 +9,5 @@ def simulate(attackers, defenders, count):
         b = Battle(attackers=copy(attackers), defenders=copy(defenders))
         b.simulate()
         results[b.winner] += 1
-    output = {}
-    for label in ('attacker', 'defender', 'draw'):
-        output[label] = (results[label] / count) * 100
-    return output
+    labels = ('attacker', 'defender', 'draw')
+    return {label: (results[label] / count) * 100 for label in labels}
