@@ -1,4 +1,5 @@
 from random import randint
+from .names import *
 
 
 ATTACK = 'attack'
@@ -35,12 +36,12 @@ class Unit:
 
 def unit_factory(name):
     units = {
-        'infantry': {ATTACK: 1, DEFENSE: 2, COST: 3},
-        'artillery': {ATTACK: 2, DEFENSE: 2, COST: 4},
-        'mech_infantry': {ATTACK: 1, DEFENSE: 2, COST: 4},
-        'tank': {ATTACK: 3, DEFENSE: 3, COST: 6},
-        'fighter': {ATTACK: 3, DEFENSE: 4, COST: 10},
-        'tactical_bomber': {ATTACK: 3, DEFENSE: 3, COST: 11},
-        'bomber': {ATTACK: 4, DEFENSE: 1, COST: 12}
+        INFANTRY: {ATTACK: 1, DEFENSE: 2, COST: 3},
+        ARTILLERY: {ATTACK: 2, DEFENSE: 2, COST: 4},
+        MECHANIZED_INFANTRY: {ATTACK: 1, DEFENSE: 2, COST: 4},
+        TANK: {ATTACK: 3, DEFENSE: 3, COST: 6},
+        FIGHTER: {ATTACK: 3, DEFENSE: 4, COST: 10},
+        TACTICAL_BOMBER: {ATTACK: 3, DEFENSE: 3, COST: 11},
+        STRATEGIC_BOMBER: {ATTACK: 4, DEFENSE: 1, COST: 12}
     }
     return Unit(name=name, **units[name])
