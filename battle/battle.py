@@ -28,11 +28,11 @@ class Battle:
         if self.attackers and self.defenders:
             return None
         if not self.attackers and not self.defenders:
-            return 'Draw'
+            return 'draw'
         if self.attackers and not self.defenders:
-            return 'Attacker'
+            return 'attacker'
         if self.defenders and not self.attackers:
-            return 'Defender'
+            return 'defender'
 
     def simulate(self):
         while self.winner is None:

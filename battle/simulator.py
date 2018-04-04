@@ -10,6 +10,6 @@ def simulate(attackers, defenders, count):
         b.simulate()
         results[b.winner] += 1
     output = {}
-    for label in ('Attacker', 'Defender', 'Draw'):
+    for label in ('attacker', 'defender', 'draw'):
         output[label] = (results[label] / count) * 100
     return output
