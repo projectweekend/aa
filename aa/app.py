@@ -1,7 +1,7 @@
 import falcon
-from api import SimulationResource
-from battle import simulate
-from unit.utils import build_army
+from aa.api import SimulationResource
+from aa.battle import simulate
+from aa.unit.utils import build_army
 
 
 application = falcon.API()

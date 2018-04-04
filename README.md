@@ -33,7 +33,7 @@ The `Content-Type` for all requests and responses is `application/json`.
 
 # Run webserver locally
 ```
-$ pipenv run gunicorn --config=gconfig.py --reload app
+$ pipenv run gunicorn --config=gconfig.py --reload aa.app
 ```
 
 # Run webserver in Docker locally
@@ -43,5 +43,5 @@ $ docker run -p 8000:8000 projectweekend/aa
 
 # Run Tests
 ```
-$ pytest --cov=. --cov-report=html
+$ pytest --cov=aa --cov-report=html
 ```
