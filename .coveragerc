@@ -1,0 +1,4 @@
+[run]
+omit =
+  aa/app.py
+  gconfig.py
