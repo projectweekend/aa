@@ -1,4 +1,3 @@
-# aa
 THIS IS A WORK IN PROGRESS!
 
 `aa` is a webserver that runs Axis & Allies battle simulations (1000x) and returns the following stats:
