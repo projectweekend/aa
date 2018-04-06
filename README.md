@@ -1,3 +1,5 @@
+![build badge](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiZTFKb3JzWkxmWS94QVJVV0RlQW5VaVg4WGNqdWlUcUw2TzhhSllNcHJhUFF4bFFqalhSS0tHRHZ6VXJTRVJVSmZCeDlNYlVwUVczRVFpK1FSdy9QY1owPSIsIml2UGFyYW1ldGVyU3BlYyI6ImhyOHpsNVJXNW9NOHNNQTEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+
 THIS IS A WORK IN PROGRESS!
 
 `aa` is a webserver that runs Axis & Allies battle simulations (1000x) and returns the following stats:
