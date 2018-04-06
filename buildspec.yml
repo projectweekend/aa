@@ -14,4 +14,6 @@ phases:
   post_build:
     commands:
       - echo Entered the post_build phase...
+      - docker build -t projectweekend/aa .
+      - docker push projectweekend/aa
       - echo Build completed on `date`
