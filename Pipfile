@@ -8,7 +8,6 @@ falcon = "*"
 gunicorn = "*"
 
 [dev-packages]
-ipython = "*"
 pytest = "*"
 pytest-cov = "*"
 pycodestyle = "*"
