@@ -1,5 +1,5 @@
 from random import randint
-from .names import *
+from .info import *
 
 
 ATTACK = 'attack'

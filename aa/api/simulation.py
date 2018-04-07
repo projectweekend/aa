@@ -1,6 +1,6 @@
 import json
 import falcon
-from aa.unit.names import UNIT_NAMES
+from aa.unit.info import UNIT_NAMES
 
 
 def validate_payload(media):
