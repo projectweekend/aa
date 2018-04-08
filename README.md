@@ -8,8 +8,9 @@ THIS IS A WORK IN PROGRESS!
 * Defender win percentage
 * Draw percentage
 
-# Simulate a battle
 The `Content-Type` for all requests and responses is `application/json`.
+
+# Simulate a battle
 * Route: `/`
 * Method: `POST`
 * Request Body:
