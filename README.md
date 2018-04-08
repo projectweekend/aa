@@ -2,40 +2,16 @@
 
 THIS IS A WORK IN PROGRESS!
 
-`aa` is a webserver that runs Axis & Allies battle simulations (1000x) and returns the following stats:
-
-* Attacker win percentage
-* Defender win percentage
-* Draw percentage
+`aa` is a web server of utilities for use with the Axis & Allies board game.
 
 The `Content-Type` for all requests and responses is `application/json`.
 
-# Simulate a battle
-* Route: `/`
-* Method: `POST`
-* Request Body:
-```json
-{
-  "attacker": {
-    "infantry": 5,
-    "tank": 5
-  },
-  "defender": {
-    "infantry": 10
-  }
-}
-```
-* Response Body:
-```json
-{
-    "attacker": 66.8,
-    "defender": 31.2,
-    "draw": 2
-}
-```
+# API Routes
+* [Get unit info](#get-unit-info)
+* [Simulate a battle](#simulate-a-battle)
 
-# Get unit info
-* Route: `/unit-info`
+## Get unit info
+* Path: `/unit-info`
 * Method: `GET`
 * Response Body:
 ```json
@@ -150,6 +126,30 @@ The `Content-Type` for all requests and responses is `application/json`.
             "bonus": ""
         }
     ]
+}
+```
+
+## Simulate a battle
+* Path: `/`
+* Method: `POST`
+* Request Body:
+```json
+{
+  "attacker": {
+    "infantry": 5,
+    "tank": 5
+  },
+  "defender": {
+    "infantry": 10
+  }
+}
+```
+* Response Body:
+```json
+{
+    "attacker": 66.8,
+    "defender": 31.2,
+    "draw": 2
 }
 ```
 
