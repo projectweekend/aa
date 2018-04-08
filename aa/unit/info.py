@@ -119,5 +119,12 @@ UNIT_INFO = {
         COST: 6,
         MOVEMENT: 2,
         BONUS: ''
+    },
+    TRANSPORT: {
+        ATTACK: 0,
+        DEFENSE: 0,
+        COST: 7,
+        MOVEMENT: 2,
+        BONUS: ''
     }
 }
