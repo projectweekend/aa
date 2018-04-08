@@ -3,27 +3,17 @@ import falcon
 from aa.unit.info import *
 
 
+def unit_info(unit_name):
+    info = {'name': unit_name}
+    info.update(UNIT_INFO[unit_name])
+    return info
+
+
 class UnitInfoResource:
 
     def on_get(self, req, res):
         res.media = {
-            'land': (
-                UNIT_INFO[INFANTRY],
-                UNIT_INFO[ARTILLERY],
-                UNIT_INFO[MECHANIZED_INFANTRY],
-                UNIT_INFO[TANK]
-            ),
-            'air': (
-                UNIT_INFO[FIGHTER],
-                UNIT_INFO[TACTICAL_BOMBER],
-                UNIT_INFO[STRATEGIC_BOMBER]
-            ),
-            'sea': (
-                UNIT_INFO[TRANSPORT],
-                UNIT_INFO[SUBMARINE],
-                UNIT_INFO[DESTROYER],
-                UNIT_INFO[CRUISER],
-                UNIT_INFO[AIRCRAFT_CARRIER],
-                UNIT_INFO[BATTLESHIP]
-            )
+            'land': [unit_info(name) for name in LAND_UNITS],
+            'air': [unit_info(name) for name in AIR_UNITS],
+            'sea': [unit_info(name) for name in SEA_UNITS]
         }
