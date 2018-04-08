@@ -4,7 +4,7 @@ from .info import UNIT_INFO
 
 class Unit:
 
-    def __init__(self, name, attack, defense, cost, movement):
+    def __init__(self, name, attack, defense, cost, movement, **kwargs):
         self.name = name
         self.attack = attack
         self.defense = defense

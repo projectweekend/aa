@@ -61,7 +61,7 @@ UNIT_INFO = {
         ATTACK: 3,
         DEFENSE: 3,
         COST: 6,
-        MOVEMENT: 2
+        MOVEMENT: 2,
         BONUS: 'Supports Tactical Bomber'
     },
     FIGHTER: {
