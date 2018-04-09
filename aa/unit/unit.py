@@ -31,4 +31,5 @@ class Unit:
 
 
 def unit_factory(name):
+    name = name.title()
     return Unit(name=name, **UNIT_INFO[name])
