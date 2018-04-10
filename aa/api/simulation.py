@@ -7,10 +7,11 @@ def validate_payload(media):
     for army_type in ('attacker', 'defender'):
         army = media.get(army_type)
         if army is None:
-            raise falcon.HTTPBadRequest()
+            raise falcon.HTTPBadRequest('Missing army')
         for k, v in army.items():
             if k not in UNIT_NAMES or not isinstance(v, int):
-                raise falcon.HTTPBadRequest()
+                msg = 'Incorrect unit name: {0}'
+                raise falcon.HTTPBadRequest(msg.format(k))
 
     return media
 

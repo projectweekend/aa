@@ -6,7 +6,8 @@ from aa.battle import simulate
 from aa.unit.utils import build_army
 
 
-cors = CORS(allow_origins_list=['http://127.0.0.1:8080'])
+cors = CORS(allow_all_origins=True, allow_all_headers=True,
+            allow_all_methods=True, allow_credentials_all_origins=True)
 application = falcon.API(middleware=[cors.middleware])
 
 unit_info_resource = UnitInfoResource()
