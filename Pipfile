@@ -7,6 +7,7 @@ name = "pypi"
 falcon = "*"
 gunicorn = "*"
 falcon-cors = "*"
+awscli = "*"
 
 [dev-packages]
 pytest = "*"
