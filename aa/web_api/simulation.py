@@ -9,8 +9,11 @@ def validate_payload(media):
         if army is None:
             raise falcon.HTTPBadRequest('Missing army')
         for k, v in army.items():
-            if k not in UNIT_NAMES or not isinstance(v, int):
+            if k not in UNIT_NAMES:
                 msg = 'Incorrect unit name: {0}'
+                raise falcon.HTTPBadRequest(msg.format(k))
+            if not isinstance(v, int):
+                msg = '{0} count must be an integer'
                 raise falcon.HTTPBadRequest(msg.format(k))
 
     return media
