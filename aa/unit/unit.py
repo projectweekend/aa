@@ -4,13 +4,14 @@ from .info import UNIT_INFO
 
 class Unit:
 
-    def __init__(self, name, attack, defense, cost, movement, type, **kwargs):
+    def __init__(self, name, attack, defense, cost, movement, type, bonus):
         self.name = name
         self.attack = attack
         self.defense = defense
         self.cost = cost
         self.movement = movement
         self.type = type
+        self.bonus = bonus
 
     def __repr__(self):
         return self.name

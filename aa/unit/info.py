@@ -69,7 +69,7 @@ UNIT_INFO = {
         COST: 3,
         MOVEMENT: 1,
         TYPE: LAND,
-        BONUS: 'Attacks at 2 when supported by Artillery'
+        BONUS: {}
     },
     ARTILLERY: {
         NAME: ARTILLERY,
@@ -78,7 +78,14 @@ UNIT_INFO = {
         COST: 4,
         MOVEMENT: 2,
         TYPE: LAND,
-        BONUS: 'Supports Infantry and Mechanized Infantry'
+        BONUS: {
+            INFANTRY: {
+                ATTACK: 2
+            },
+            MECHANIZED_INFANTRY: {
+                ATTACK: 2
+            }
+        }
     },
     MECHANIZED_INFANTRY: {
         NAME: MECHANIZED_INFANTRY,
@@ -87,7 +94,7 @@ UNIT_INFO = {
         COST: 4,
         MOVEMENT: 2,
         TYPE: LAND,
-        BONUS: 'Attacks at 2 when supported by Artillery'
+        BONUS: {}
     },
     TANK: {
         NAME: TANK,
@@ -96,7 +103,11 @@ UNIT_INFO = {
         COST: 6,
         MOVEMENT: 2,
         TYPE: LAND,
-        BONUS: 'Supports Tactical Bomber'
+        BONUS: {
+            TACTICAL_BOMBER: {
+                ATTACK: 4
+            }
+        }
     },
     FIGHTER: {
         NAME: FIGHTER,
@@ -105,7 +116,11 @@ UNIT_INFO = {
         COST: 10,
         MOVEMENT: 4,
         TYPE: AIR,
-        BONUS: 'Supports Tactical Bomber'
+        BONUS: {
+            TACTICAL_BOMBER: {
+                ATTACK: 4
+            }
+        }
     },
     TACTICAL_BOMBER: {
         NAME: TACTICAL_BOMBER,
@@ -114,7 +129,7 @@ UNIT_INFO = {
         COST: 11,
         MOVEMENT: 4,
         TYPE: AIR,
-        BONUS: 'Attacks at 4 when supported by Fighter or Tank'
+        BONUS: {}
     },
     STRATEGIC_BOMBER: {
         NAME: STRATEGIC_BOMBER,
@@ -123,7 +138,7 @@ UNIT_INFO = {
         COST: 12,
         MOVEMENT: 6,
         TYPE: AIR,
-        BONUS: ''
+        BONUS: {}
     },
     AIRCRAFT_CARRIER: {
         NAME: AIRCRAFT_CARRIER,
@@ -132,7 +147,7 @@ UNIT_INFO = {
         COST: 16,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: ''
+        BONUS: {}
     },
     BATTLESHIP: {
         NAME: BATTLESHIP,
@@ -141,7 +156,7 @@ UNIT_INFO = {
         COST: 20,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: ''
+        BONUS: {}
     },
     DESTROYER: {
         NAME: DESTROYER,
@@ -150,7 +165,7 @@ UNIT_INFO = {
         COST: 8,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: ''
+        BONUS: {}
     },
     CRUISER: {
         NAME: CRUISER,
@@ -159,7 +174,7 @@ UNIT_INFO = {
         COST: 12,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: ''
+        BONUS: {}
     },
     SUBMARINE: {
         NAME: SUBMARINE,
@@ -168,7 +183,7 @@ UNIT_INFO = {
         COST: 6,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: ''
+        BONUS: {}
     },
     TRANSPORT: {
         NAME: TRANSPORT,
@@ -177,6 +192,6 @@ UNIT_INFO = {
         COST: 7,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: ''
+        BONUS: {}
     }
 }
