@@ -1,11 +1,12 @@
+from .info import UNIT_INFO
 from .unit import Unit
 
 VALID_ROLL_VALUES = [1, 2, 3, 4, 5, 6]
 
 
 def test_unit():
-    u = Unit(name='infantry', attack=1, defense=2, cost=3, movement=1)
-    assert repr(u) == 'infantry'
+    u = Unit(**UNIT_INFO['Infantry'])
+    assert repr(u) == 'Infantry'
 
     for _ in range(10):
         assert u.roll() in VALID_ROLL_VALUES
