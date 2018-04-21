@@ -8,18 +8,12 @@ def test_build_army():
         'tank': 1
     }
     army = build_army(config=config, unit_factory=unit_factory)
-    assert len(army) == 3
-    assert army[0].name == 'Tank'
-    assert army[0].cost == 6
-    assert army[0].attack == 3
-    assert army[0].defense == 3
-
-    assert army[1].name == 'Infantry'
-    assert army[1].cost == 3
-    assert army[1].attack == 1
-    assert army[1].defense == 2
-
-    assert army[2].name == 'Infantry'
-    assert army[2].cost == 3
-    assert army[2].attack == 1
-    assert army[2].defense == 2
+    infantry_count = 0
+    tank_count = 0
+    for unit in army:
+        if unit.name == 'Infantry':
+            infantry_count += 1
+        if unit.name == 'Tank':
+            tank_count += 1
+    assert infantry_count == 2
+    assert tank_count == 1
