@@ -43,6 +43,15 @@ def test_simulate_battle_missing_army(client):
     assert result.status == falcon.HTTP_400
 
 
+def test_simulate_battle_army_with_no_units(client):
+    battle_army_with_no_units = {
+        'attacker': {},
+        'defender': {}
+    }
+    result = client.simulate_post('/', json=battle_army_with_no_units)
+    assert result.status == falcon.HTTP_400
+
+
 def test_simulate_battle_invalid_unit_name(client):
     battle_invalid_unit_name = {
         'attacker': {

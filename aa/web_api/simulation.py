@@ -6,8 +6,14 @@ from aa.unit.info import UNIT_NAMES
 def validate_payload(media):
     for army_type in ('attacker', 'defender'):
         army = media.get(army_type)
+        # an attacker/defender army element is not present
         if army is None:
-            raise falcon.HTTPBadRequest('Missing army')
+            msg = 'Missing army for {0}'
+            raise falcon.HTTPBadRequest(msg.format(army_type))
+        # an attacker/defender army element is present, but has no units
+        if not army:
+            msg = 'Army has no units for {0}'
+            raise falcon.HTTPBadRequest(msg.format(army_type))
         for k, v in army.items():
             if k not in UNIT_NAMES:
                 msg = 'Incorrect unit name: {0}'
