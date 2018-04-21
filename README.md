@@ -165,5 +165,5 @@ $ docker run -p 8000:8000 projectweekend/aa
 
 # Run Tests
 ```
-$ pytest --cov=aa --cov-report=html
+$ make pytest
 ```
