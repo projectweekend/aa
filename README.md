@@ -152,18 +152,3 @@ The `Content-Type` for all requests and responses is `application/json`.
     "draw": 2
 }
 ```
-
-# Run webserver locally
-```
-$ pipenv run gunicorn --config=gconfig.py --reload aa.app
-```
-
-# Run webserver in Docker locally
-```
-$ docker run -p 8000:8000 projectweekend/aa
-```
-
-# Run Tests
-```
-$ make pytest
-```
