@@ -18,7 +18,7 @@ The `Content-Type` for all requests and responses is `application/json`.
 {
     "land": [
         {
-            "name": "infantry",
+            "name": "Infantry",
             "attack": 1,
             "defense": 2,
             "cost": 3,
@@ -26,7 +26,7 @@ The `Content-Type` for all requests and responses is `application/json`.
             "bonus": "Attacks at 2 when supported by Artillery"
         },
         {
-            "name": "artillery",
+            "name": "Artillery",
             "attack": 2,
             "defense": 2,
             "cost": 4,
@@ -34,7 +34,7 @@ The `Content-Type` for all requests and responses is `application/json`.
             "bonus": "Supports Infantry and Mechanized Infantry"
         },
         {
-            "name": "mechanized_infantry",
+            "name": "Mechanized Infantry",
             "attack": 1,
             "defense": 2,
             "cost": 4,
@@ -42,7 +42,7 @@ The `Content-Type` for all requests and responses is `application/json`.
             "bonus": "Attacks at 2 when supported by Artillery"
         },
         {
-            "name": "tank",
+            "name": "Tank",
             "attack": 3,
             "defense": 3,
             "cost": 6,
@@ -52,7 +52,7 @@ The `Content-Type` for all requests and responses is `application/json`.
     ],
     "air": [
         {
-            "name": "fighter",
+            "name": "Fighter",
             "attack": 3,
             "defense": 4,
             "cost": 10,
@@ -60,7 +60,7 @@ The `Content-Type` for all requests and responses is `application/json`.
             "bonus": "Supports Tactical Bomber"
         },
         {
-            "name": "tactical_bomber",
+            "name": "Tactical Bomber",
             "attack": 3,
             "defense": 3,
             "cost": 11,
@@ -68,7 +68,7 @@ The `Content-Type` for all requests and responses is `application/json`.
             "bonus": "Attacks at 4 when supported by Fighter or Tank"
         },
         {
-            "name": "strategic_bomber",
+            "name": "Strategic Bomber",
             "attack": 4,
             "defense": 1,
             "cost": 12,
@@ -78,7 +78,7 @@ The `Content-Type` for all requests and responses is `application/json`.
     ],
     "sea": [
         {
-            "name": "transport",
+            "name": "Transport",
             "attack": 0,
             "defense": 0,
             "cost": 7,
@@ -86,7 +86,7 @@ The `Content-Type` for all requests and responses is `application/json`.
             "bonus": ""
         },
         {
-            "name": "submarine",
+            "name": "Submarine",
             "attack": 2,
             "defense": 1,
             "cost": 6,
@@ -94,7 +94,7 @@ The `Content-Type` for all requests and responses is `application/json`.
             "bonus": ""
         },
         {
-            "name": "destroyer",
+            "name": "Destroyer",
             "attack": 2,
             "defense": 2,
             "cost": 8,
@@ -102,7 +102,7 @@ The `Content-Type` for all requests and responses is `application/json`.
             "bonus": ""
         },
         {
-            "name": "cruiser",
+            "name": "Cruiser",
             "attack": 3,
             "defense": 3,
             "cost": 12,
@@ -110,7 +110,7 @@ The `Content-Type` for all requests and responses is `application/json`.
             "bonus": ""
         },
         {
-            "name": "aircraft_carrier",
+            "name": "Aircraft Carrier",
             "attack": 0,
             "defense": 2,
             "cost": 16,
@@ -118,7 +118,7 @@ The `Content-Type` for all requests and responses is `application/json`.
             "bonus": ""
         },
         {
-            "name": "battleship",
+            "name": "Battleship",
             "attack": 4,
             "defense": 4,
             "cost": 20,
@@ -136,11 +136,11 @@ The `Content-Type` for all requests and responses is `application/json`.
 ```json
 {
   "attacker": {
-    "infantry": 5,
-    "tank": 5
+    "Infantry": 5,
+    "Tank": 5
   },
   "defender": {
-    "infantry": 10
+    "Infantry": 10
   }
 }
 ```
