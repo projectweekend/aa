@@ -26,6 +26,16 @@ def test_get_a_land_battle_template(client):
         assert v == 0
 
 
+def test_simulate_land_battle(client):
+    battle_config = client.simulate_get('/land-battle').json
+    battle_config['attacker']['Infantry'] = 5
+    battle_config['defender']['Infantry'] = 5
+    result = client.simulate_post('/land-battle', json=battle_config)
+    assert isinstance(result.json['attacker'], float)
+    assert isinstance(result.json['defender'], float)
+    assert isinstance(result.json['draw'], float)
+
+
 def test_get_unit_info(client):
     result = client.simulate_get('/unit-info')
     for unit in result.json[LAND]:
