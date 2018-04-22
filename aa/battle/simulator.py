@@ -9,13 +9,16 @@ new_land_battle = battle_factory(army_cls=Army, battle_cls=LandBattle)
 
 
 def simulate_battles(battle_config, count, factory):
-    results = Counter()
+    winner_counts = Counter()
     for _ in range(count):
         b = factory(config=battle_config)
         b.simulate()
-        results[b.winner] += 1
+        winner_counts[b.winner] += 1
     labels = ('attacker', 'defender', 'draw')
-    return {label: (results[label] / count) * 100 for label in labels}
+    wins = {label: (winner_counts[label] / count) * 100 for label in labels}
+    return {
+        'wins': wins
+    }
 
 
 def simulate(battle_config, count):

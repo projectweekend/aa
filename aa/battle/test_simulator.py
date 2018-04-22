@@ -15,7 +15,7 @@ def test_simulator():
     }
 
     results = simulate(config, 100)
-    for k, v in results.items():
+    for k, v in results['wins'].items():
         assert k in EXPECTED_RESULT_LABELS
         assert isinstance(v, float)
 
@@ -31,6 +31,6 @@ def test_land_battle_simulator():
         }
     }
     results = simulate_land_battle(config, 100)
-    for k, v in results.items():
+    for k, v in results['wins'].items():
         assert k in EXPECTED_RESULT_LABELS
         assert isinstance(v, float)
