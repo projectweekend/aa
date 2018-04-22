@@ -1,11 +1,11 @@
-from aa.unit.utils import build_army
+from aa.unit import Army
 from .battle import Battle
 
 
 def test_battle_damage_and_casulties():
     army_size = 5
-    attackers = build_army({'tank': army_size})
-    defenders = build_army({'tank': army_size})
+    attackers = Army.build({'tank': army_size})
+    defenders = Army.build({'tank': army_size})
 
     b = Battle(attackers, defenders)
 
@@ -22,8 +22,8 @@ def test_battle_damage_and_casulties():
 def test_battle_simulate():
     army_size = 5
     for _ in range(100):
-        attackers = build_army({'tank': army_size})
-        defenders = build_army({'tank': army_size})
+        attackers = Army.build({'tank': army_size})
+        defenders = Army.build({'tank': army_size})
 
         b = Battle(attackers, defenders)
         print(type(b.attackers))

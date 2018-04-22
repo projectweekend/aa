@@ -1,1 +1,2 @@
-from .unit import unit_factory
+from .army import Army
+from .unit import unit_factory, Unit

@@ -1,5 +1,4 @@
-from .army import army_factory
-from .unit import unit_factory
+from .army import Army
 
 
 def test_attacking_army():
@@ -8,7 +7,7 @@ def test_attacking_army():
         'infantry': 5,
         'artillery': 2
     }
-    army = army_factory(config, unit_factory)
+    army = Army.build(config)
     army.sort('attack')
     for i, unit in enumerate(army):
         if i < 5:

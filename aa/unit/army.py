@@ -1,4 +1,5 @@
 from operator import attrgetter
+from .unit import unit_factory
 
 
 class Army:
@@ -11,6 +12,13 @@ class Army:
 
     def __len__(self):
         return len(self._units)
+
+    @classmethod
+    def build(cls, config):
+        units = []
+        for name, count in config.items():
+            units += [unit_factory(name) for _ in range(count)]
+        return cls(units=units)
 
     def _remove_bonuses(self):
         for u in self._units:
@@ -40,10 +48,3 @@ class Army:
     def take_casulties(self, count):
         if count != 0:
             self._units = self._units[:count * -1]
-
-
-def army_factory(cgf, unit_factory):
-    units = []
-    for name, count in cgf.items():
-        units += [unit_factory(name) for _ in range(count)]
-    return Army(units=units)
