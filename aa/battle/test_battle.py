@@ -2,6 +2,19 @@ from aa.unit.utils import build_army
 from .battle import Battle
 
 
+def test_battle_army_sorting_and_bonus():
+    attackers = build_army({'tank': 1, 'artillery': 1, 'infantry': 2})
+    defenders = build_army({'tank': 1})
+
+    b = Battle(attackers, defenders)
+    assert b.attackers[0].name == 'Tank'
+    assert b.attackers[1].name == 'Artillery'
+    assert b.attackers[2].name == 'Infantry'
+    assert b.attackers[2].attack == 2
+    assert b.attackers[3].name == 'Infantry'
+    assert b.attackers[3].attack == 1
+
+
 def test_battle_damage_and_casulties():
     army_size = 5
     attackers = build_army({'tank': army_size})

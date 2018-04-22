@@ -1,8 +1,29 @@
+from operator import attrgetter
+
+
 class Battle:
 
     def __init__(self, attackers, defenders):
         self.attackers = attackers
         self.defenders = defenders
+        self._apply_bonuses()
+        self._sort_armies()
+
+    def _sort_armies(self):
+        attack_rank = attrgetter('attack_rank')
+        self.attackers = sorted(self.attackers, key=attack_rank, reverse=True)
+        defense_rank = attrgetter('defense_rank')
+        self.defenders = sorted(self.defenders, key=defense_rank, reverse=True)
+
+    def _apply_bonuses(self):
+        # bonuses only apply to attacking units
+        bonuses = [unit.bonus for unit in self.attackers if unit.bonus]
+        for bonus in bonuses:
+            for unit_name, bonus_cfg in bonus.items():
+                for unit in self.attackers:
+                    if unit.name == unit_name:
+                        unit.apply_bonus(bonus_cfg)
+                        break
 
     def roll_damage(self):
         attack_hits = 0
