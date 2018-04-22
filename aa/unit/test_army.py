@@ -10,11 +10,13 @@ def test_attacking_army():
     }
     army = army_factory(config, unit_factory)
     army.sort('attack')
-    boosted_infantry_count = 0
-    for i, unit in enumerate(army):
+    for i, unit in enumerate(army.units):
         if i < 5:
             assert unit.name == 'Tank'
         elif i > 4 and i < 7:
             assert unit.name == 'Artillery'
         else:
             assert unit.name == 'Infantry'
+
+    boosted_units = [unit for unit in army.units if unit.active_bonus]
+    assert len(boosted_units) == 2
