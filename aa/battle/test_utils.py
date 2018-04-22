@@ -1,9 +1,10 @@
 from aa.unit import Army
+from .battle import Battle, LandBattle
 from .utils import battle_factory
 
 
 def test_battle_factory():
-    new_battle = battle_factory(army=Army)
+    new_battle = battle_factory(army_cls=Army, battle_cls=Battle)
     config = {
         'attacker': {
             'infantry': 5,
