@@ -42,15 +42,15 @@ def test_unit_with_active_bonus():
     giver = unit_factory('artillery')
     receiver = unit_factory('infantry')
 
-    receiver.update_bonus(giver.bonuses_granted[0])
+    receiver.active_bonus = giver.bonuses_granted[0]
     assert receiver.attack_with_bonus == 2
     assert receiver.defense_with_bonus == 2
-    receiver.update_bonus(None)
+    receiver.active_bonus = None
     assert receiver.attack_with_bonus == 1
     assert receiver.defense_with_bonus == 2
 
     defense_bonus = Bonus(targets=['Infantry'], boosted_attribute='defense',
                           boost_value=4)
-    receiver.update_bonus(defense_bonus)
+    receiver.active_bonus = defense_bonus
     assert receiver.attack_with_bonus == 1
     assert receiver.defense_with_bonus == 4

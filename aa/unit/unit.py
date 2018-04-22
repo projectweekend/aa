@@ -21,7 +21,7 @@ class Unit:
         self.movement = movement
         self.type = type
         self.bonuses_granted = bonuses_granted
-        self._active_bonus = active_bonus
+        self.active_bonus = active_bonus
 
     def __repr__(self):
         return self.name
@@ -40,22 +40,19 @@ class Unit:
 
     @property
     def attack_with_bonus(self):
-        if self._active_bonus is None:
+        if self.active_bonus is None:
             return self.attack
-        if self._active_bonus.boosted_attribute != ATTACK:
+        if self.active_bonus.boosted_attribute != ATTACK:
             return self.attack
-        return self._active_bonus.boost_value
+        return self.active_bonus.boost_value
 
     @property
     def defense_with_bonus(self):
-        if self._active_bonus is None:
+        if self.active_bonus is None:
             return self.defense
-        if self._active_bonus.boosted_attribute != DEFENSE:
+        if self.active_bonus.boosted_attribute != DEFENSE:
             return self.defense
-        return self._active_bonus.boost_value
-
-    def update_bonus(self, bonus):
-        self._active_bonus = bonus
+        return self.active_bonus.boost_value
 
     def roll(self):
         return randint(1, 6)
