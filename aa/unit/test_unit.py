@@ -1,5 +1,5 @@
 from .info import *
-from .unit import unit_factory
+from .unit import unit_factory, Bonus
 
 VALID_ROLL_VALUES = [1, 2, 3, 4, 5, 6]
 
@@ -28,7 +28,7 @@ def test_unit():
             assert damage == 0
 
 
-def test_unit_with_enhancements():
+def test_unit_with_bonuses_granted():
     u = unit_factory('artillery')
     assert u.attack_rank == 7.5
     assert u.defense_rank == 7.5
@@ -36,3 +36,21 @@ def test_unit_with_enhancements():
         assert b.targets == [INFANTRY, MECHANIZED_INFANTRY]
         assert b.boosted_attribute == ATTACK
         assert b.boost_value == 2
+
+
+def test_unit_with_active_bonus():
+    giver = unit_factory('artillery')
+    receiver = unit_factory('infantry')
+
+    receiver.update_bonus(giver.bonuses_granted[0])
+    assert receiver.attack_with_bonus == 2
+    assert receiver.defense_with_bonus == 2
+    receiver.update_bonus(None)
+    assert receiver.attack_with_bonus == 1
+    assert receiver.defense_with_bonus == 2
+
+    defense_bonus = Bonus(targets=['Infantry'], boosted_attribute='defense',
+                          boost_value=4)
+    receiver.update_bonus(defense_bonus)
+    assert receiver.attack_with_bonus == 1
+    assert receiver.defense_with_bonus == 4
