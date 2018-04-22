@@ -6,6 +6,7 @@ class Army:
     def __init__(self, units):
         self.units = units
         self._refresh_bonuses()
+        self.sort()
 
     def _remove_bonuses(self):
         for u in self.units:
@@ -23,14 +24,13 @@ class Army:
                     u.active_bonus = b
                     break
 
-    def sort(self, army_type):
+    def sort(self, army_type=None):
+        if army_type is None:
+            sort_key = attrgetter('cost')
         if army_type == 'attack':
             sort_key = attrgetter('attack_rank')
-        elif army_type == 'defense':
+        if army_type == 'defense':
             sort_key = attrgetter('defense_rank')
-        else:
-            raise ValueError('Invalid army_type')
-
         self.units = sorted(self.units, key=sort_key, reverse=True)
 
 
