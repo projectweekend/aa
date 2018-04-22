@@ -1,11 +1,11 @@
 from .info import *
-from .unit import unit_factory, Bonus
+from .unit import Unit, Bonus
 
 VALID_ROLL_VALUES = [1, 2, 3, 4, 5, 6]
 
 
 def test_unit():
-    u = unit_factory('infantry')
+    u = Unit.build_by_name('infantry')
     assert repr(u) == 'Infantry'
 
     assert u.attack_rank == 4
@@ -29,7 +29,7 @@ def test_unit():
 
 
 def test_unit_with_bonuses_granted():
-    u = unit_factory('artillery')
+    u = Unit.build_by_name('artillery')
     assert u.attack_rank == 7.5
     assert u.defense_rank == 7.5
     for b in u.bonuses_granted:
@@ -39,8 +39,8 @@ def test_unit_with_bonuses_granted():
 
 
 def test_unit_with_active_bonus():
-    giver = unit_factory('artillery')
-    receiver = unit_factory('infantry')
+    giver = Unit.build_by_name('artillery')
+    receiver = Unit.build_by_name('infantry')
 
     receiver.active_bonus = giver.bonuses_granted[0]
     assert receiver.attack_with_bonus == 2

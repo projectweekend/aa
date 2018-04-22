@@ -1,5 +1,5 @@
 from operator import attrgetter
-from .unit import unit_factory
+from .unit import Unit
 
 
 class Army:
@@ -14,7 +14,7 @@ class Army:
         return len(self._units)
 
     @classmethod
-    def build(cls, config):
+    def build(cls, config, unit_factory=Unit.build_by_name):
         units = []
         for name, count in config.items():
             units += [unit_factory(name) for _ in range(count)]

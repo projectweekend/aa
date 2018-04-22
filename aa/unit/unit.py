@@ -26,6 +26,13 @@ class Unit:
     def __repr__(self):
         return self.name
 
+    @classmethod
+    def build_by_name(cls, name):
+        unit_args = UNIT_INFO[name.title()]
+        kwargs = dict(unit_args)
+        kwargs[BONUSES] = [Bonus(**e) for e in unit_args[BONUSES]]
+        return cls(**kwargs)
+
     @property
     def attack_rank(self):
         return self.attack + self.cost + self.bonus_rank
@@ -68,10 +75,3 @@ class Unit:
         if roll <= self.defense_with_bonus:
             return roll, 1
         return roll, 0
-
-
-def unit_factory(name):
-    unit_args = UNIT_INFO[name.title()]
-    kwargs = dict(unit_args)
-    kwargs[BONUSES] = [Bonus(**e) for e in unit_args[BONUSES]]
-    return Unit(**kwargs)
