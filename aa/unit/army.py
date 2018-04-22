@@ -4,22 +4,24 @@ from operator import attrgetter
 class Army:
 
     def __init__(self, units):
-        self.units = units
+        self._units = units
         self._refresh_bonuses()
-        self.sort()
+
+    def __getitem__(self, item):
+        return self._units[item]
 
     def _remove_bonuses(self):
-        for u in self.units:
+        for u in self._units:
             u.active_bonus = None
 
     def _bonuses_to_apply(self):
-        for u in self.units:
+        for u in self._units:
             yield from u.bonuses_granted
 
     def _refresh_bonuses(self):
         self._remove_bonuses()
         for b in self._bonuses_to_apply():
-            for u in self.units:
+            for u in self._units:
                 if u.name in b.targets and u.active_bonus is None:
                     u.active_bonus = b
                     break
@@ -31,7 +33,7 @@ class Army:
             sort_key = attrgetter('attack_rank')
         if army_type == 'defense':
             sort_key = attrgetter('defense_rank')
-        self.units = sorted(self.units, key=sort_key, reverse=True)
+        self._units = sorted(self._units, key=sort_key, reverse=True)
 
 
 def army_factory(cgf, unit_factory):
