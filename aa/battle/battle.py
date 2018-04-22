@@ -8,10 +8,6 @@ class Battle:
         self.defenders = defenders
         self.amphibious_assault = amphibious_assault
 
-    @classmethod
-    def new_land_battle(cls, config, army_factory):
-        pass
-
     def prepare_armies(self):
         self.attackers.refresh_bonuses()
         self.attackers.sort('attack')

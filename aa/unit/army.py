@@ -14,10 +14,10 @@ class Army:
         return len(self._units)
 
     @classmethod
-    def build(cls, config, unit_factory=Unit.build_by_name):
+    def build(cls, config):
         units = []
         for name, count in config.items():
-            units += [unit_factory(name) for _ in range(count)]
+            units += [Unit.build_by_name(name) for _ in range(count)]
         return cls(units=units)
 
     def _remove_bonuses(self):
