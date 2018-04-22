@@ -1,5 +1,4 @@
 from collections import Counter
-from copy import copy
 from aa.unit import Army
 from .utils import battle_factory
 
