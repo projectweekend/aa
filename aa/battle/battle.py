@@ -6,24 +6,14 @@ class Battle:
     def __init__(self, attackers, defenders):
         self.attackers = attackers
         self.defenders = defenders
-        self._apply_bonuses()
-        self._sort_armies()
 
-    def _sort_armies(self):
-        attack_rank = attrgetter('attack_rank')
-        self.attackers = sorted(self.attackers, key=attack_rank, reverse=True)
-        defense_rank = attrgetter('defense_rank')
-        self.defenders = sorted(self.defenders, key=defense_rank, reverse=True)
+    def prepare_attackers(self):
+        self.attackers.refresh_bonuses()
+        self.attackers.sort('attack')
 
-    def _apply_bonuses(self):
-        # bonuses only apply to attacking units
-        bonuses = [unit.bonus for unit in self.attackers if unit.bonus]
-        for bonus in bonuses:
-            for unit_name, bonus_cfg in bonus.items():
-                for unit in self.attackers:
-                    if unit.name == unit_name:
-                        unit.apply_bonus(bonus_cfg)
-                        break
+    def prepare_defenders(self):
+        self.defenders.refresh_bonuses()
+        self.defenders.sort('defense')
 
     def roll_damage(self):
         attack_hits = 0
@@ -57,6 +47,8 @@ class Battle:
 
     def simulate(self):
         while self.winner is None:
+            self.prepare_attackers()
+            self.prepare_defenders()
             attack_hits, defense_hits = self.roll_damage()
             self.take_casulties(attack_hits=attack_hits,
                                 defense_hits=defense_hits)

@@ -5,7 +5,6 @@ class Army:
 
     def __init__(self, units):
         self._units = units
-        self._refresh_bonuses()
 
     def __getitem__(self, item):
         return self._units[item]
@@ -18,7 +17,7 @@ class Army:
         for u in self._units:
             yield from u.bonuses_granted
 
-    def _refresh_bonuses(self):
+    def refresh_bonuses(self):
         self._remove_bonuses()
         for b in self._bonuses_to_apply():
             for u in self._units:
