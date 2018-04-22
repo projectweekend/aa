@@ -1,4 +1,5 @@
 from operator import attrgetter
+from .info import SEA
 from .unit import Unit
 
 
@@ -48,3 +49,6 @@ class Army:
     def take_casulties(self, count):
         if count != 0:
             self._units = self._units[:count * -1]
+
+    def remove_sea_units(self):
+        self._units = [u for u in self._units if u.type != SEA]

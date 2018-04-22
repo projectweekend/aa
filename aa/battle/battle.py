@@ -46,3 +46,18 @@ class Battle:
             attack_hits, defense_hits = self.roll_damage()
             self.take_casulties(attack_hits=attack_hits,
                                 defense_hits=defense_hits)
+
+
+class LandBattle(Battle):
+
+    def simulate(self):
+        round = 0
+        while self.winner is None:
+            self.prepare_armies()
+            attack_hits, defense_hits = self.roll_damage()
+            # Remove sea units from amphibious assault
+            if round == 0:
+                self.attackers.remove_sea_units()
+            self.take_casulties(attack_hits=attack_hits,
+                                defense_hits=defense_hits)
+            round += 1
