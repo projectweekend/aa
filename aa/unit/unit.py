@@ -1,17 +1,26 @@
 from random import randint
-from .info import UNIT_INFO
+from .info import UNIT_INFO, ENHANCEMENTS
+
+
+class Enhancement:
+
+    def __init__(self, targets, boosted_attribute, boost_value):
+        self.targets = targets
+        self.boosted_attribute = boosted_attribute
+        self.boost_value = boost_value
 
 
 class Unit:
 
-    def __init__(self, name, attack, defense, cost, movement, type, bonus):
+    def __init__(self, name, attack, defense, cost, movement, type,
+                 enhancements):
         self.name = name
         self.attack = attack
         self.defense = defense
         self.cost = cost
         self.movement = movement
         self.type = type
-        self.bonus = bonus
+        self.enhancements = enhancements
 
     def __repr__(self):
         return self.name
@@ -26,7 +35,7 @@ class Unit:
 
     @property
     def bonus_rank(self):
-        return 1.5 if self.bonus else 0
+        return 1.5 if self.enhancements else 0
 
     def roll(self):
         return randint(1, 6)
@@ -43,12 +52,9 @@ class Unit:
             return roll, 1
         return roll, 0
 
-    def apply_bonus(self, bonus_cfg):
-        for attr, val in bonus_cfg.items():
-            if getattr(self, attr) != val:
-                setattr(self, attr, val)
-
 
 def unit_factory(name):
-    name = name.title()
-    return Unit(**UNIT_INFO[name])
+    unit_args = UNIT_INFO[name.title()]
+    kwargs = dict(unit_args)
+    kwargs[ENHANCEMENTS] = [Enhancement(**e) for e in unit_args[ENHANCEMENTS]]
+    return Unit(**kwargs)

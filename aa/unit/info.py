@@ -4,12 +4,16 @@ ATTACK = 'attack'
 DEFENSE = 'defense'
 COST = 'cost'
 MOVEMENT = 'movement'
-BONUS = 'bonus'
+ENHANCEMENTS = 'enhancements'
 TYPE = 'type'
 
-LAND = 'land'
-AIR = 'air'
-SEA = 'sea'
+TARGETS = 'targets'
+BOOSTED_ATTRIBUTE = 'boosted_attribute'
+BOOST_VALUE = 'boost_value'
+
+LAND = 'Land'
+AIR = 'Air'
+SEA = 'Sea'
 
 INFANTRY = 'Infantry'
 ARTILLERY = 'Artillery'
@@ -69,7 +73,7 @@ UNIT_INFO = {
         COST: 3,
         MOVEMENT: 1,
         TYPE: LAND,
-        BONUS: {}
+        ENHANCEMENTS: []
     },
     ARTILLERY: {
         NAME: ARTILLERY,
@@ -78,14 +82,13 @@ UNIT_INFO = {
         COST: 4,
         MOVEMENT: 2,
         TYPE: LAND,
-        BONUS: {
-            INFANTRY: {
-                ATTACK: 2
-            },
-            MECHANIZED_INFANTRY: {
-                ATTACK: 2
+        ENHANCEMENTS: [
+            {
+                TARGETS: [INFANTRY, MECHANIZED_INFANTRY],
+                BOOSTED_ATTRIBUTE: ATTACK,
+                BOOST_VALUE: 2
             }
-        }
+        ]
     },
     MECHANIZED_INFANTRY: {
         NAME: MECHANIZED_INFANTRY,
@@ -94,7 +97,7 @@ UNIT_INFO = {
         COST: 4,
         MOVEMENT: 2,
         TYPE: LAND,
-        BONUS: {}
+        ENHANCEMENTS: []
     },
     TANK: {
         NAME: TANK,
@@ -103,11 +106,13 @@ UNIT_INFO = {
         COST: 6,
         MOVEMENT: 2,
         TYPE: LAND,
-        BONUS: {
-            TACTICAL_BOMBER: {
-                ATTACK: 4
+        ENHANCEMENTS: [
+            {
+                TARGETS: [TACTICAL_BOMBER],
+                BOOSTED_ATTRIBUTE: ATTACK,
+                BOOST_VALUE: 4
             }
-        }
+        ]
     },
     FIGHTER: {
         NAME: FIGHTER,
@@ -116,11 +121,13 @@ UNIT_INFO = {
         COST: 10,
         MOVEMENT: 4,
         TYPE: AIR,
-        BONUS: {
-            TACTICAL_BOMBER: {
-                ATTACK: 4
+        ENHANCEMENTS: [
+            {
+                TARGETS: [TACTICAL_BOMBER],
+                BOOSTED_ATTRIBUTE: ATTACK,
+                BOOST_VALUE: 4
             }
-        }
+        ]
     },
     TACTICAL_BOMBER: {
         NAME: TACTICAL_BOMBER,
@@ -129,7 +136,7 @@ UNIT_INFO = {
         COST: 11,
         MOVEMENT: 4,
         TYPE: AIR,
-        BONUS: {}
+        ENHANCEMENTS: []
     },
     STRATEGIC_BOMBER: {
         NAME: STRATEGIC_BOMBER,
@@ -138,7 +145,7 @@ UNIT_INFO = {
         COST: 12,
         MOVEMENT: 6,
         TYPE: AIR,
-        BONUS: {}
+        ENHANCEMENTS: []
     },
     AIRCRAFT_CARRIER: {
         NAME: AIRCRAFT_CARRIER,
@@ -147,7 +154,7 @@ UNIT_INFO = {
         COST: 16,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: {}
+        ENHANCEMENTS: []
     },
     BATTLESHIP: {
         NAME: BATTLESHIP,
@@ -156,7 +163,7 @@ UNIT_INFO = {
         COST: 20,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: {}
+        ENHANCEMENTS: []
     },
     DESTROYER: {
         NAME: DESTROYER,
@@ -165,7 +172,7 @@ UNIT_INFO = {
         COST: 8,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: {}
+        ENHANCEMENTS: []
     },
     CRUISER: {
         NAME: CRUISER,
@@ -174,7 +181,7 @@ UNIT_INFO = {
         COST: 12,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: {}
+        ENHANCEMENTS: []
     },
     SUBMARINE: {
         NAME: SUBMARINE,
@@ -183,7 +190,7 @@ UNIT_INFO = {
         COST: 6,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: {}
+        ENHANCEMENTS: []
     },
     TRANSPORT: {
         NAME: TRANSPORT,
@@ -192,6 +199,6 @@ UNIT_INFO = {
         COST: 7,
         MOVEMENT: 2,
         TYPE: SEA,
-        BONUS: {}
+        ENHANCEMENTS: []
     }
 }
