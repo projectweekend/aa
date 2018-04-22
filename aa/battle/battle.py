@@ -7,11 +7,9 @@ class Battle:
         self.attackers = attackers
         self.defenders = defenders
 
-    def prepare_attackers(self):
+    def prepare_armies(self):
         self.attackers.refresh_bonuses()
         self.attackers.sort('attack')
-
-    def prepare_defenders(self):
         self.defenders.refresh_bonuses()
         self.defenders.sort('defense')
 
@@ -27,12 +25,8 @@ class Battle:
         return attack_hits, defense_hits
 
     def take_casulties(self, attack_hits, defense_hits):
-        attack_hits = attack_hits * -1
-        defense_hits = defense_hits * -1
-        if attack_hits != 0:
-            self.defenders = self.defenders[:attack_hits]
-        if defense_hits != 0:
-            self.attackers = self.attackers[:defense_hits]
+        self.attackers.take_casulties(defense_hits)
+        self.defenders.take_casulties(attack_hits)
 
     @property
     def winner(self):
@@ -47,8 +41,7 @@ class Battle:
 
     def simulate(self):
         while self.winner is None:
-            self.prepare_attackers()
-            self.prepare_defenders()
+            self.prepare_armies()
             attack_hits, defense_hits = self.roll_damage()
             self.take_casulties(attack_hits=attack_hits,
                                 defense_hits=defense_hits)
