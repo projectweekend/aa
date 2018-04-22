@@ -4,7 +4,7 @@ ATTACK = 'attack'
 DEFENSE = 'defense'
 COST = 'cost'
 MOVEMENT = 'movement'
-ENHANCEMENTS = 'enhancements'
+BONUSES = 'bonuses_granted'
 TYPE = 'type'
 
 TARGETS = 'targets'
@@ -73,7 +73,7 @@ UNIT_INFO = {
         COST: 3,
         MOVEMENT: 1,
         TYPE: LAND,
-        ENHANCEMENTS: []
+        BONUSES: []
     },
     ARTILLERY: {
         NAME: ARTILLERY,
@@ -82,7 +82,7 @@ UNIT_INFO = {
         COST: 4,
         MOVEMENT: 2,
         TYPE: LAND,
-        ENHANCEMENTS: [
+        BONUSES: [
             {
                 TARGETS: [INFANTRY, MECHANIZED_INFANTRY],
                 BOOSTED_ATTRIBUTE: ATTACK,
@@ -97,7 +97,7 @@ UNIT_INFO = {
         COST: 4,
         MOVEMENT: 2,
         TYPE: LAND,
-        ENHANCEMENTS: []
+        BONUSES: []
     },
     TANK: {
         NAME: TANK,
@@ -106,7 +106,7 @@ UNIT_INFO = {
         COST: 6,
         MOVEMENT: 2,
         TYPE: LAND,
-        ENHANCEMENTS: [
+        BONUSES: [
             {
                 TARGETS: [TACTICAL_BOMBER],
                 BOOSTED_ATTRIBUTE: ATTACK,
@@ -121,7 +121,7 @@ UNIT_INFO = {
         COST: 10,
         MOVEMENT: 4,
         TYPE: AIR,
-        ENHANCEMENTS: [
+        BONUSES: [
             {
                 TARGETS: [TACTICAL_BOMBER],
                 BOOSTED_ATTRIBUTE: ATTACK,
@@ -136,7 +136,7 @@ UNIT_INFO = {
         COST: 11,
         MOVEMENT: 4,
         TYPE: AIR,
-        ENHANCEMENTS: []
+        BONUSES: []
     },
     STRATEGIC_BOMBER: {
         NAME: STRATEGIC_BOMBER,
@@ -145,7 +145,7 @@ UNIT_INFO = {
         COST: 12,
         MOVEMENT: 6,
         TYPE: AIR,
-        ENHANCEMENTS: []
+        BONUSES: []
     },
     AIRCRAFT_CARRIER: {
         NAME: AIRCRAFT_CARRIER,
@@ -154,7 +154,7 @@ UNIT_INFO = {
         COST: 16,
         MOVEMENT: 2,
         TYPE: SEA,
-        ENHANCEMENTS: []
+        BONUSES: []
     },
     BATTLESHIP: {
         NAME: BATTLESHIP,
@@ -163,7 +163,7 @@ UNIT_INFO = {
         COST: 20,
         MOVEMENT: 2,
         TYPE: SEA,
-        ENHANCEMENTS: []
+        BONUSES: []
     },
     DESTROYER: {
         NAME: DESTROYER,
@@ -172,7 +172,7 @@ UNIT_INFO = {
         COST: 8,
         MOVEMENT: 2,
         TYPE: SEA,
-        ENHANCEMENTS: []
+        BONUSES: []
     },
     CRUISER: {
         NAME: CRUISER,
@@ -181,7 +181,7 @@ UNIT_INFO = {
         COST: 12,
         MOVEMENT: 2,
         TYPE: SEA,
-        ENHANCEMENTS: []
+        BONUSES: []
     },
     SUBMARINE: {
         NAME: SUBMARINE,
@@ -190,7 +190,7 @@ UNIT_INFO = {
         COST: 6,
         MOVEMENT: 2,
         TYPE: SEA,
-        ENHANCEMENTS: []
+        BONUSES: []
     },
     TRANSPORT: {
         NAME: TRANSPORT,
@@ -199,6 +199,6 @@ UNIT_INFO = {
         COST: 7,
         MOVEMENT: 2,
         TYPE: SEA,
-        ENHANCEMENTS: []
+        BONUSES: []
     }
 }
