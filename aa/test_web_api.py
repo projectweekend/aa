@@ -31,9 +31,9 @@ def test_simulate_land_battle(client):
     battle_config['attacker']['Infantry'] = 5
     battle_config['defender']['Infantry'] = 5
     result = client.simulate_post('/land-battle', json=battle_config)
-    assert isinstance(result.json['wins']['attacker'], float)
-    assert isinstance(result.json['wins']['defender'], float)
-    assert isinstance(result.json['wins']['draw'], float)
+    assert isinstance(result.json['wins']['attacker'], int)
+    assert isinstance(result.json['wins']['defender'], int)
+    assert isinstance(result.json['wins']['draw'], int)
 
 
 def test_get_unit_info(client):
@@ -53,9 +53,9 @@ def test_simulate_battle(client):
         }
     }
     result = client.simulate_post('/', json=battle)
-    assert isinstance(result.json['wins']['attacker'], float)
-    assert isinstance(result.json['wins']['defender'], float)
-    assert isinstance(result.json['wins']['draw'], float)
+    assert isinstance(result.json['wins']['attacker'], int)
+    assert isinstance(result.json['wins']['defender'], int)
+    assert isinstance(result.json['wins']['draw'], int)
 
 
 def test_simulate_battle_missing_army(client):

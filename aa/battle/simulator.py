@@ -22,10 +22,10 @@ def simulate_battles(battle_config, count, factory):
         if b.winner == 'defender':
             defenders_remaining.append(b.defenders.unit_summary())
         wins.append(b.winner)
-    win_summary = pd.Series(wins).value_counts()
-    wins = {label: ((win_count / count) * 100) for label, win_count
-            in win_summary.items()}
-    return {'wins': wins}
+    win_series = pd.Series(wins)
+    win_summary = win_series.value_counts().to_dict()
+    win_summary['total_played'] = int(win_series.count())
+    return {'wins': win_summary}
 
 
 def simulate(battle_config, count):

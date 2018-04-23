@@ -1,7 +1,7 @@
 from .simulator import simulate, simulate_land_battle
 
 
-EXPECTED_RESULT_LABELS = ('attacker', 'defender', 'draw')
+EXPECTED_RESULT_LABELS = ('attacker', 'defender', 'draw', 'total_played')
 
 
 def test_simulator():
@@ -17,7 +17,7 @@ def test_simulator():
     results = simulate(config, 100)
     for k, v in results['wins'].items():
         assert k in EXPECTED_RESULT_LABELS
-        assert isinstance(v, float)
+        assert isinstance(v, int)
 
 
 def test_land_battle_simulator():
@@ -33,4 +33,4 @@ def test_land_battle_simulator():
     results = simulate_land_battle(config, 100)
     for k, v in results['wins'].items():
         assert k in EXPECTED_RESULT_LABELS
-        assert isinstance(v, float)
+        assert isinstance(v, int)
