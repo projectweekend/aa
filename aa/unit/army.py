@@ -1,3 +1,4 @@
+from collections import Counter
 from operator import attrgetter
 from .info import SEA
 from .unit import Unit
@@ -37,6 +38,12 @@ class Army:
         if army_type == 'defense':
             sort_key = attrgetter('defense_rank')
         self._units = sorted(self._units, key=sort_key, reverse=True)
+
+    def unit_summary(self):
+        unit_counts = Counter()
+        for u in self._units:
+            unit_counts[u.name] += 1
+        return dict(unit_counts)
 
     def refresh_bonuses(self):
         self._remove_bonuses()

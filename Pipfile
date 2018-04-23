@@ -14,6 +14,7 @@ pandas = "*"
 pytest = "*"
 pytest-cov = "*"
 pycodestyle = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.6"
