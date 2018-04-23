@@ -11,9 +11,7 @@ new_land_battle = battle_factory(army_cls=Army, battle_cls=LandBattle)
 
 def simulate_battles(battle_config, count, factory):
     wins = []
-    attackers_remaining = []
-    defenders_remaining = []
-    winner_counts = Counter()
+
     for _ in range(count):
         b = factory(config=battle_config)
         b.simulate()
@@ -22,9 +20,11 @@ def simulate_battles(battle_config, count, factory):
         if b.winner == 'defender':
             defenders_remaining.append(b.defenders.unit_summary())
         wins.append(b.winner)
+
     win_series = pd.Series(wins)
     win_summary = win_series.value_counts().to_dict()
     win_summary['total_played'] = int(win_series.count())
+
     return {'wins': win_summary}
 
 
