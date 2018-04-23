@@ -13,9 +13,9 @@ def client():
 
 def test_get_a_land_battle_template(client):
     result = client.simulate_get('/land-battle')
-    expected_attacker_keys = set(unit for unit in
-                                 LAND_UNITS + AIR_UNITS + (CRUISER, BATTLESHIP))
-    expected_defender_keys = set(unit for unit in LAND_UNITS + AIR_UNITS)
+    expected_attacker_keys = [unit for unit in
+                              LAND_UNITS + AIR_UNITS + (CRUISER, BATTLESHIP)]
+    expected_defender_keys = [unit for unit in LAND_UNITS + AIR_UNITS]
 
     for k, v in result.json['attacker'].items():
         assert k in expected_attacker_keys

@@ -8,6 +8,7 @@ falcon = "*"
 gunicorn = "*"
 falcon-cors = "*"
 awscli = "*"
+pandas = "*"
 
 [dev-packages]
 pytest = "*"
