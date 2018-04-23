@@ -15,10 +15,6 @@ def simulate_battles(battle_config, count, factory):
     for _ in range(count):
         b = factory(config=battle_config)
         b.simulate()
-        if b.winner == 'attacker':
-            attackers_remaining.append(b.attackers.unit_summary())
-        if b.winner == 'defender':
-            defenders_remaining.append(b.defenders.unit_summary())
         wins.append(b.winner)
 
     win_series = pd.Series(wins)
