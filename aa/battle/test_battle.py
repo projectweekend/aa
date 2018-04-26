@@ -19,6 +19,19 @@ def test_battle_damage_and_casulties():
     assert len(b.defenders) == expected_defender_count
 
 
+def test_battle_stats():
+    army_size = 5
+    attackers = Army.build({'tank': army_size})
+    defenders = Army.build({'tank': army_size})
+
+    b = Battle(attackers, defenders)
+    b.simulate()
+    stats = b.stats()
+
+    assert len(attackers) == stats['attackers_remaining']
+    assert len(defenders) == stats['defenders_remaining']
+
+
 def test_battle_simulate():
     army_size = 5
     for _ in range(100):

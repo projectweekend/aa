@@ -3,10 +3,39 @@ from operator import attrgetter
 
 class Battle:
 
-    def __init__(self, attackers, defenders, amphibious_assault=False):
+    def __init__(self, attackers, defenders):
         self.attackers = attackers
         self.defenders = defenders
-        self.amphibious_assault = amphibious_assault
+
+        self._attackers_ipc_before = self.attackers_ipc_value
+        self._defenders_ipc_before = self.defenders_ipc_value
+
+    @property
+    def winner(self):
+        if self.attackers and self.defenders:
+            return None
+        if not self.attackers and not self.defenders:
+            return 'draw'
+        if self.attackers and not self.defenders:
+            return 'attacker'
+        if self.defenders and not self.attackers:
+            return 'defender'
+
+    @property
+    def attackers_count(self):
+        return len(self.attackers)
+
+    @property
+    def attackers_ipc_value(self):
+        return sum(u.cost for u in self.attackers)
+
+    @property
+    def defenders_count(self):
+        return len(self.defenders)
+
+    @property
+    def defenders_ipc_value(self):
+        return sum(u.cost for u in self.defenders)
 
     def prepare_armies(self):
         self.attackers.refresh_bonuses()
@@ -29,16 +58,15 @@ class Battle:
         self.attackers.take_casulties(defense_hits)
         self.defenders.take_casulties(attack_hits)
 
-    @property
-    def winner(self):
-        if self.attackers and self.defenders:
-            return None
-        if not self.attackers and not self.defenders:
-            return 'draw'
-        if self.attackers and not self.defenders:
-            return 'attacker'
-        if self.defenders and not self.attackers:
-            return 'defender'
+    def stats(self):
+        att_ipc_lost = self._attackers_ipc_before - self.attackers_ipc_value
+        def_ipc_lost = self._defenders_ipc_before - self.defenders_ipc_value
+        return {
+            'attackers_remaining': self.attackers_count,
+            'attackers_ipc_lost': att_ipc_lost,
+            'defenders_remaining': self.defenders_count,
+            'defenders_ipc_lost': def_ipc_lost,
+        }
 
     def simulate(self):
         while self.winner is None:
