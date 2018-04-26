@@ -34,6 +34,10 @@ def test_simulate_land_battle(client):
     assert isinstance(result.json['wins']['attacker'], int)
     assert isinstance(result.json['wins']['defender'], int)
     assert isinstance(result.json['wins']['draw'], int)
+    assert isinstance(result.json['stats']['attackers_remaining'], float)
+    assert isinstance(result.json['stats']['defenders_remaining'], float)
+    assert isinstance(result.json['stats']['attackers_ipc_lost'], float)
+    assert isinstance(result.json['stats']['defenders_ipc_lost'], float)
 
 
 def test_get_unit_info(client):
