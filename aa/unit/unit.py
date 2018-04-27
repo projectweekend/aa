@@ -31,6 +31,24 @@ class Roll:
         return roll, 0
 
 
+class Rank:
+
+    def __init__(self, unit):
+        self._unit = unit
+
+    @property
+    def attack(self):
+        return self._unit.attack + self._unit.cost + self.bonus
+
+    @property
+    def defense(self):
+        return self._unit.defense + self._unit.cost + self.bonus
+
+    @property
+    def bonus(self):
+        return 1.5 if self._unit.bonuses_granted else 0
+
+
 class Unit:
 
     def __init__(self, name, attack, defense, cost, movement, type,
@@ -44,6 +62,7 @@ class Unit:
         self.bonuses_granted = bonuses_granted
         self.active_bonus = active_bonus
         self.roll = Roll(unit=self)
+        self.rank = Rank(unit=self)
 
     def __repr__(self):
         return self.name
@@ -54,18 +73,6 @@ class Unit:
         kwargs = dict(unit_args)
         kwargs[BONUSES] = [Bonus(**e) for e in unit_args[BONUSES]]
         return cls(**kwargs)
-
-    @property
-    def attack_rank(self):
-        return self.attack + self.cost + self.bonus_rank
-
-    @property
-    def defense_rank(self):
-        return self.defense + self.cost + self.bonus_rank
-
-    @property
-    def bonus_rank(self):
-        return 1.5 if self.bonuses_granted else 0
 
     @property
     def attack(self):

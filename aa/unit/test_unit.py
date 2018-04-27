@@ -8,8 +8,8 @@ def test_unit():
     u = Unit.build_by_name('infantry')
     assert repr(u) == 'Infantry'
 
-    assert u.attack_rank == 4
-    assert u.defense_rank == 5
+    assert u.rank.attack == 4
+    assert u.rank.defense == 5
     assert u.bonuses_granted == []
 
     for _ in range(10):
@@ -28,8 +28,8 @@ def test_unit():
 
 def test_unit_with_bonuses_granted():
     u = Unit.build_by_name('artillery')
-    assert u.attack_rank == 7.5
-    assert u.defense_rank == 7.5
+    assert u.rank.attack == 7.5
+    assert u.rank.defense == 7.5
     for b in u.bonuses_granted:
         assert b.targets == [INFANTRY, MECHANIZED_INFANTRY]
         assert b.boosted_attribute == ATTACK

@@ -67,9 +67,9 @@ class Army:
         if army_type is None:
             sort_key = attrgetter('cost')
         if army_type == 'attack':
-            sort_key = attrgetter('attack_rank')
+            sort_key = attrgetter('rank.attack')
         if army_type == 'defense':
-            sort_key = attrgetter('defense_rank')
+            sort_key = attrgetter('rank.attack')
         self._units = sorted(self._units, key=sort_key, reverse=True)
 
     def remove(self, unit_types):
