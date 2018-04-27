@@ -13,15 +13,13 @@ def test_unit():
     assert u.bonuses_granted == []
 
     for _ in range(10):
-        assert u.roll() in VALID_ROLL_VALUES
-
-        roll, damage = u.roll_attack()
+        roll, damage = u.roll.attack()
         if roll <= u.attack:
             assert damage == 1
         else:
             assert damage == 0
 
-        roll, damage = u.roll_defense()
+        roll, damage = u.roll.defense()
         if roll <= u.defense:
             assert damage == 1
         else:

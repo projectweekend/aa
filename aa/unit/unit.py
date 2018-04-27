@@ -10,6 +10,27 @@ class Bonus:
         self.boost_value = boost_value
 
 
+class Roll:
+
+    def __init__(self, unit):
+        self._unit = unit
+
+    def _roll(self):
+        return randint(1, 6)
+
+    def attack(self):
+        roll = self._roll()
+        if roll <= self._unit.attack_with_bonus:
+            return roll, 1
+        return roll, 0
+
+    def defense(self):
+        roll = self._roll()
+        if roll <= self._unit.defense_with_bonus:
+            return roll, 1
+        return roll, 0
+
+
 class Unit:
 
     def __init__(self, name, attack, defense, cost, movement, type,
@@ -22,6 +43,7 @@ class Unit:
         self.type = type
         self.bonuses_granted = bonuses_granted
         self.active_bonus = active_bonus
+        self.roll = Roll(unit=self)
 
     def __repr__(self):
         return self.name
@@ -60,18 +82,3 @@ class Unit:
         if self.active_bonus.boosted_attribute != DEFENSE:
             return self.defense
         return self.active_bonus.boost_value
-
-    def roll(self):
-        return randint(1, 6)
-
-    def roll_attack(self):
-        roll = self.roll()
-        if roll <= self.attack_with_bonus:
-            return roll, 1
-        return roll, 0
-
-    def roll_defense(self):
-        roll = self.roll()
-        if roll <= self.defense_with_bonus:
-            return roll, 1
-        return roll, 0

@@ -32,15 +32,15 @@ class Roll:
 
     def attack(self, included_types=None):
         if included_types is None:
-            return sum(u.roll_attack()[1] for u in self._army)
+            return sum(u.roll.attack()[1] for u in self._army)
         to_roll = (u for u in self._army if u.type in included_types)
-        return sum(u.roll_attack()[1] for u in to_roll)
+        return sum(u.roll.attack()[1] for u in to_roll)
 
     def defense(self, included_types=None):
         if included_types is None:
-            return sum(u.roll_defense()[1] for u in self._army)
+            return sum(u.roll.defense()[1] for u in self._army)
         to_roll = (u for u in self._army if u.type in included_types)
-        return sum(u.roll_defense()[1] for u in to_roll)
+        return sum(u.roll.defense()[1] for u in to_roll)
 
 
 class Army:
