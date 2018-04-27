@@ -44,15 +44,7 @@ class Battle:
         self.defenders.sort('defense')
 
     def roll_damage(self):
-        attack_hits = 0
-        defense_hits = 0
-        for unit in self.attackers:
-            _, damage = unit.roll_attack()
-            attack_hits += damage
-        for unit in self.defenders:
-            _, damage = unit.roll_defense()
-            defense_hits += damage
-        return attack_hits, defense_hits
+        return self.attackers.roll_attack(), self.defenders.roll_defense()
 
     def take_casulties(self, attack_hits, defense_hits):
         self.attackers.take_casulties(defense_hits)
@@ -89,3 +81,11 @@ class LandBattle(Battle):
             self.take_casulties(attack_hits=attack_hits,
                                 defense_hits=defense_hits)
             round += 1
+
+
+class NavalBattle(Battle):
+
+    def simulate(self):
+        round = 0
+        while self.winner is None:
+            pass
