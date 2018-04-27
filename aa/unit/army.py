@@ -1,6 +1,5 @@
 from collections import Counter
 from operator import attrgetter
-from .info import SEA
 from .unit import Unit
 
 
@@ -73,6 +72,9 @@ class Army:
             sort_key = attrgetter('defense_rank')
         self._units = sorted(self._units, key=sort_key, reverse=True)
 
+    def remove(self, unit_types):
+        self._units = [u for u in self._units if u.type not in unit_types]
+
     def unit_summary(self):
         unit_counts = Counter()
         for u in self._units:
@@ -82,6 +84,3 @@ class Army:
     def take_casulties(self, count):
         if count != 0:
             self._units = self._units[:count * -1]
-
-    def remove_sea_units(self):
-        self._units = [u for u in self._units if u.type != SEA]

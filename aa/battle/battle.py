@@ -1,5 +1,7 @@
 from operator import attrgetter
 
+from aa.unit.info import SEA
+
 
 class Battle:
 
@@ -77,7 +79,7 @@ class LandBattle(Battle):
             attack_hits, defense_hits = self.roll_damage()
             # Remove sea units from amphibious assault
             if round == 0:
-                self.attackers.remove_sea_units()
+                self.attackers.remove(unit_types=[SEA])
             self.take_casulties(attack_hits=attack_hits,
                                 defense_hits=defense_hits)
             round += 1
