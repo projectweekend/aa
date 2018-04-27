@@ -81,11 +81,3 @@ class LandBattle(Battle):
             self.take_casulties(attack_hits=attack_hits,
                                 defense_hits=defense_hits)
             round += 1
-
-
-class NavalBattle(Battle):
-
-    def simulate(self):
-        round = 0
-        while self.winner is None:
-            pass
