@@ -16,6 +16,6 @@ def test_attacking_army():
             assert unit.name == 'Artillery'
         else:
             assert unit.name == 'Infantry'
-    army.refresh_bonuses()
+    army.bonuses.refresh()
     boosted_units = [unit for unit in army if unit.active_bonus]
     assert len(boosted_units) == 2

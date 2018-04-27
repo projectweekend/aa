@@ -38,13 +38,13 @@ class Battle:
         return sum(u.cost for u in self.defenders)
 
     def prepare_armies(self):
-        self.attackers.refresh_bonuses()
+        self.attackers.bonuses.refresh()
         self.attackers.sort('attack')
-        self.defenders.refresh_bonuses()
+        self.defenders.bonuses.refresh()
         self.defenders.sort('defense')
 
     def roll_damage(self):
-        return self.attackers.roll_attack(), self.defenders.roll_defense()
+        return self.attackers.roll.attack(), self.defenders.roll.defense()
 
     def take_casulties(self, attack_hits, defense_hits):
         self.attackers.take_casulties(defense_hits)
