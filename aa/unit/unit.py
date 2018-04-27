@@ -20,13 +20,13 @@ class Roll:
 
     def attack(self):
         roll = self._roll()
-        if roll <= self._unit.attack_with_bonus:
+        if roll <= self._unit.attack:
             return roll, 1
         return roll, 0
 
     def defense(self):
         roll = self._roll()
-        if roll <= self._unit.defense_with_bonus:
+        if roll <= self._unit.defense:
             return roll, 1
         return roll, 0
 
@@ -36,8 +36,8 @@ class Unit:
     def __init__(self, name, attack, defense, cost, movement, type,
                  bonuses_granted, active_bonus=None):
         self.name = name
-        self.attack = attack
-        self.defense = defense
+        self._attack = attack
+        self._defense = defense
         self.cost = cost
         self.movement = movement
         self.type = type
@@ -68,17 +68,17 @@ class Unit:
         return 1.5 if self.bonuses_granted else 0
 
     @property
-    def attack_with_bonus(self):
+    def attack(self):
         if self.active_bonus is None:
-            return self.attack
+            return self._attack
         if self.active_bonus.boosted_attribute != ATTACK:
-            return self.attack
+            return self._attack
         return self.active_bonus.boost_value
 
     @property
-    def defense_with_bonus(self):
+    def defense(self):
         if self.active_bonus is None:
-            return self.defense
+            return self._defense
         if self.active_bonus.boosted_attribute != DEFENSE:
-            return self.defense
+            return self._defense
         return self.active_bonus.boost_value
