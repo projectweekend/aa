@@ -59,3 +59,19 @@ class Army:
 
     def remove_sea_units(self):
         self._units = [u for u in self._units if u.type != SEA]
+
+    def roll_attack(self, unit_type=None):
+        if unit_type is None:
+            results = (u.roll_attack()[1] for u in self._units)
+        else:
+            results = (u.roll_attack()[1] for u in self._units
+                       if u.type == unit_type)
+        return sum(results)
+
+    def roll_defense(self, unit_type=None):
+        if unit_type is None:
+            results = (u.roll_defense()[1] for u in self._units)
+        else:
+            results = (u.roll_defense()[1] for u in self._units
+                       if u.type == unit_type)
+        return sum(results)
