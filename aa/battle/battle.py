@@ -74,12 +74,11 @@ class LandBattle(Battle):
 
     def simulate(self):
         round = 0
+        amphibious_hits = self.attackers.roll.amphibious_assault()
         while self.winner is None:
             self.prepare_armies()
             attack_hits, defense_hits = self.roll_damage()
-            # Remove sea units from amphibious assault
-            if round == 0:
-                self.attackers.remove.by_type(type_name=SEA)
             self.take_casulties(attack_hits=attack_hits,
                                 defense_hits=defense_hits)
+            amphibious_hits = 0
             round += 1

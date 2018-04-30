@@ -1,5 +1,6 @@
 from collections import Counter
 from operator import attrgetter
+from .info import BATTLESHIP, CRUISER
 from .unit import Unit
 
 
@@ -41,6 +42,14 @@ class Roll:
             return sum(u.roll.defense()[1] for u in self._army)
         to_roll = (u for u in self._army if u.type in included_types)
         return sum(u.roll.defense()[1] for u in to_roll)
+
+    def amphibious_assault(self):
+        allowed = (BATTLESHIP, CRUISER, )
+        to_roll = (u for u in self._army if u.name in allowed)
+        hits = sum(u.roll.attack()[1] for u in to_roll)
+        for unit_name in allowed:
+            self._army.remove.by_name(unit_name=unit_name)
+        return hits
 
 
 class Remove:
