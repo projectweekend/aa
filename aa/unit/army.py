@@ -43,11 +43,26 @@ class Roll:
         return sum(u.roll.defense()[1] for u in to_roll)
 
 
+class Remove:
+
+    def __init__(self, army):
+        self._army = army
+
+    def by_name(self, unit_name):
+        self._army._units = [u for u in self._army._units
+                             if u.name != unit_name]
+
+    def by_type(self, type_name):
+        self._army._units = [u for u in self._army._units
+                             if u.type != type_name]
+
+
 class Army:
 
     def __init__(self, units):
         self._units = units
         self.bonuses = Bonuses(army=self)
+        self.remove = Remove(army=self)
         self.roll = Roll(army=self)
 
     def __getitem__(self, item):
@@ -71,9 +86,6 @@ class Army:
         if army_type == 'defense':
             sort_key = attrgetter('rank.attack')
         self._units = sorted(self._units, key=sort_key, reverse=True)
-
-    def remove(self, unit_types):
-        self._units = [u for u in self._units if u.type not in unit_types]
 
     def unit_summary(self):
         unit_counts = Counter()
