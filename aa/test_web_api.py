@@ -1,3 +1,5 @@
+import datetime
+
 import falcon
 from falcon import testing
 import pytest
@@ -105,3 +107,16 @@ def test_simulate_battle_invalid_unit_count(client):
     }
     result = client.simulate_post('/', json=battle_invalid_unit_count)
     assert result.status == falcon.HTTP_400
+
+
+def test_ipctracker_create_valid(client):
+    new_ipc_tracker = {
+        'name': 'A&A Game',
+        'starting_ipc': 30
+    }
+    result = client.simulate_post('/ipc-tracker', json=new_ipc_tracker)
+    assert result.status == falcon.HTTP_201
+    assert result.json['starting_ipc'] == 30
+    assert result.json['name'] == 'A&A Game'
+    assert type(result.json['game_id']) == str
+    assert type(result.json['created_at']) == int

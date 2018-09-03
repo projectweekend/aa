@@ -9,6 +9,7 @@ gunicorn = "*"
 falcon-cors = "*"
 awscli = "*"
 pandas = "*"
+marshmallow = "==2.15.4"
 
 [dev-packages]
 pytest = "*"
