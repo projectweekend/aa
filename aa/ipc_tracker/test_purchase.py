@@ -15,14 +15,17 @@ def units_to_purchase():
 
 
 def test_purchase(units_to_purchase):
-    p = Purchase(units=units_to_purchase)
-
-    assert p.units == units_to_purchase
-
-    expected_ipc = 0
+    expected_ipc_cost = 0
     expected_summary = defaultdict(int)
     for u in units_to_purchase:
-        expected_ipc += u[COST]
+        expected_ipc_cost += u[COST]
         expected_summary[u[NAME]] += u[COST]
-    assert p.ipc == expected_ipc
+    starting_ipc = expected_ipc_cost + 5
+
+    p = Purchase(units=units_to_purchase, ipc_before=starting_ipc)
+
+    assert p.units == units_to_purchase
+    assert p.ipc_before == starting_ipc
+    assert p.ipc_cost == expected_ipc_cost
     assert p.summary == expected_summary
+    assert p.ipc_after == 5
