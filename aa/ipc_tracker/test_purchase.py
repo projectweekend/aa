@@ -4,7 +4,7 @@ import pytest
 
 from aa.unit.info import *
 
-from .purchase import Purchase
+from .purchase import Purchase, PurchaseHistory
 
 
 @pytest.fixture
@@ -20,12 +20,22 @@ def test_purchase(units_to_purchase):
     for u in units_to_purchase:
         expected_ipc_cost += u[COST]
         expected_summary[u[NAME]] += u[COST]
-    starting_ipc = expected_ipc_cost + 5
 
-    p = Purchase(units=units_to_purchase, ipc_before=starting_ipc)
+    p = Purchase(units=units_to_purchase)
 
     assert p.units == units_to_purchase
-    assert p.ipc_before == starting_ipc
-    assert p.ipc_cost == expected_ipc_cost
+    assert p.ipc == expected_ipc_cost
     assert p.summary == expected_summary
-    assert p.ipc_after == 5
+
+
+def test_purchase_history(units_to_purchase):
+    purchase_hist = PurchaseHistory()
+    purchase_hist.add(Purchase(units=units_to_purchase))
+
+    assert len(purchase_hist) == 1
+    assert purchase_hist.total_spent == 21
+
+    purchase_hist.add(Purchase(units=units_to_purchase))
+
+    assert len(purchase_hist) == 2
+    assert purchase_hist.total_spent == 42
