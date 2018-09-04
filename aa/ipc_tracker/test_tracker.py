@@ -22,4 +22,12 @@ def test_tracker():
     with pytest.raises(Exception):
         t.purchase(units=units)
     assert t.current_ipc == 30
-    assert t.avail_ipc == 57    
+    assert t.avail_ipc == 57
+
+    t.change_ipc(20)
+    assert t.current_ipc == 20
+    assert t.avail_ipc == 57
+
+    t.earn_ipc()
+    assert t.current_ipc == 20
+    assert t.avail_ipc == 77
